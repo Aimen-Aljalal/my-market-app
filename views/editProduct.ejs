@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/edit" method="post">
+      <div>
+        <label for="">product name</label>
+        <input type="text" name="title" value="<%=prod.title %>" />
+      </div>
+      <div>
+        <label for="">product price</label>
+        <input type="text" name="price" value="<%=prod.price %>" />
+      </div>
+      <div>
+        <label for="">image</label>
+        <input type="file" name="imageUrl" value="<%=prod.imageUrl %>" />
+      </div>
+      <div>
+        <label for="">description</label>
+        <input type="text" name="description" value="<%=prod.description %>" />
+      </div>
+      <input type="hidden" name="productId" value="<%= prod._id %>" />
+
+      <button type="submit">edit</button>
+    </form>
+  </body>
+</html>
+

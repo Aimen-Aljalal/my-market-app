@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/addProduct" method="post" enctype="multipart/form-data">
+      <div>
+        <label for="">product name</label>
+        <input type="text" name="title" />
+      </div>
+      <div>
+        <label for="">product price</label>
+        <input type="text" name="price" />
+      </div>
+      <div>
+        <label for="">image</label>
+        <input type="file" name="image" />
+      </div>
+      <div>
+        <label for="">description</label>
+        <input type="text" name="description" />
+      </div>
+      <button type="submit">add</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% if(prods.length > 0){ %>
+        <h1>you products</h1>
+        <% for(let product of prods) { %>
+        <h1><%= product.productId.title %></h1>
+        <h1><%= product.productId.price %></h1>
+        <h1><%= product.quantity %></h1>
+        <form action="/order" method="post" >
+          <button type="submit">order now</button>
+      </form>
+        <% } %> <% } else { %>
+        <h1>no products here yet</h1>
+        <% } %>
+       
+  </body>
+</html>

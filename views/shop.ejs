@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% if (prods && prods.length > 0) { %> <% for (let product of prods) { %>
+    <h1><%= product.title %></h1>
+    <h1><%= product.price %></h1>
+    <img style="width: 200px; width: 200px;" src="/images/<%= product.imageUrl %>" alt="product image" />
+    <h1><%= product.description %></h1>
+
+    <form action="/delete" method="post">
+      <input type="hidden" name="productId" value="<%= product._id %>" />
+      <button type="submit">delete</button>
+    </form>
+
+    <a href="/edit/<%=product._id %>">
+      <button type="button">Edit</button>
+    </a>
+
+    <form action="/details" method="get">
+      
+      <input type="hidden" name="productId" value="<%= product._id %>" />
+
+      <button type="submit">details</button>
+    </form>
+    <form action="/addToCart" method="post">
+      <input type="hidden" name="productId" value="<%= product._id %>" />
+
+      <button type="submit">add to cart</button>
+    </form>
+
+    <hr />
+    <% } %> <% } else { %>
+    <h1>Nothing here yet</h1>
+    <% } %>
+  </body>
+</html>

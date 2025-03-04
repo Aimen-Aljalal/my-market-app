@@ -1,0 +1,24 @@
+# تجاهل مجلد node_modules
+node_modules/
+
+# تجاهل ملفات البيئة الحساسة
+.env
+
+# تجاهل ملفات السجل (log files)
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# تجاهل المجلدات المؤقتة
+dist/
+build/
+coverage/
+
+# تجاهل الملفات المولدة من أدوات التحرير أو النظام
+.vscode/
+.idea/
+
+# تجاهل الملفات الموقعة أو النسخ الاحتياطية
+*.swp
+*.bak

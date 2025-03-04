@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% if (order.length <= 0) { %>
+    <h1>Nothing there!</h1>
+    <% } else { %>
+    <ul class="">
+      <% order.forEach(order => { %>
+      <li>
+        <h1>Order - # <%= order._id %></h1>
+        - <a href="/order/<%= order._id %>">invoices</a>
+        <ul>
+          <% order.products.forEach(p => { %>
+          <li><%= p.product.title %> (<%= p.quantity %>)</li>
+          <% }); %>
+        </ul>
+      </li>
+      <% }); %>
+    </ul>
+    <% } %>
+  </body>
+</html>
