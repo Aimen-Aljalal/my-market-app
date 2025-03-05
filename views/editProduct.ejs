@@ -3,30 +3,119 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Edit Product</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+      }
+
+      header {
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+      }
+
+      .form-container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        margin-top: 30px;
+      }
+
+      .form-container h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .form-container div {
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-size: 14px;
+        color: #555;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: #f9f9f9;
+      }
+
+      input[type="text"]:focus,
+      input[type="file"]:focus {
+        border-color: #007bff;
+        background-color: #eef7ff;
+        outline: none;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+      
+      input[type="hidden"] {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <form action="/edit" method="post">
-      <div>
-        <label for="">product name</label>
-        <input type="text" name="title" value="<%=prod.title %>" />
-      </div>
-      <div>
-        <label for="">product price</label>
-        <input type="text" name="price" value="<%=prod.price %>" />
-      </div>
-      <div>
-        <label for="">image</label>
-        <input type="file" name="imageUrl" value="<%=prod.imageUrl %>" />
-      </div>
-      <div>
-        <label for="">description</label>
-        <input type="text" name="description" value="<%=prod.description %>" />
-      </div>
-      <input type="hidden" name="productId" value="<%= prod._id %>" />
+    <%- include("partials/header") %>
 
-      <button type="submit">edit</button>
-    </form>
+    <div class="form-container">
+      <h2>Edit Product</h2>
+      <form action="/edit" method="post">
+        <div>
+          <label for="title">Product Name</label>
+          <input type="text" name="title" value="<%=prod.title %>" id="title" />
+        </div>
+        <div>
+          <label for="price">Product Price</label>
+          <input type="text" name="price" value="<%=prod.price %>" id="price" />
+        </div>
+        <div>
+          <label for="imageUrl">Image</label>
+          <input type="file" name="imageUrl" value="<%=prod.imageUrl %>" id="imageUrl" />
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <input type="text" name="description" value="<%=prod.description %>" id="description" />
+        </div>
+        <input type="hidden" name="productId" value="<%= prod._id %>" />
+        <button type="submit">Edit</button>
+      </form>
+    </div>
   </body>
 </html>
-

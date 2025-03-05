@@ -3,18 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-title {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: #27ae60;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-product {
+            color: #d9534f;
+            font-size: 22px;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-    <% if(product) { %>
 
-<h1><%= product.title %></h1>
-<h1><%= product.price %></h1>
-<h1><%= product.description %></h1>
-<h1><%= product.imageUrl %></h1>
+    <%- include("partials/header") %>
 
+    <div class="container">
+        <% if(product) { %>
+            <h1 class="product-title"><%= product.title %></h1>
+            <p class="product-price">$<%= product.price %></p>
+            <p class="product-description"><%= product.description %></p>
+            <img src="/images/<%= product.imageUrl %>" alt="Product Image" class="product-image">
         <% } else { %>
-            <h1>nothing </h1>
-            <% } %>
+            <h1 class="no-product">Nothing to display</h1>
+        <% } %>
+    </div>
+
 </body>
 </html>

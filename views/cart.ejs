@@ -1,23 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <% if(prods.length > 0){ %>
-        <h1>you products</h1>
-        <% for(let product of prods) { %>
-        <h1><%= product.productId.title %></h1>
-        <h1><%= product.productId.price %></h1>
-        <h1><%= product.quantity %></h1>
-        <form action="/order" method="post" >
-          <button type="submit">order now</button>
-      </form>
-        <% } %> <% } else { %>
-        <h1>no products here yet</h1>
-        <% } %>
-       
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .title {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .product-card h2 {
+      font-size: 20px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #27ae60;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .quantity {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .order-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .order-btn:hover {
+      background: #0056b3;
+    }
+
+    .no-products {
+      color: #d9534f;
+      font-size: 22px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <%- include("partials/header") %>
+
+  <div class="container">
+    <% if (prods.length > 0) { %>
+      <h1 class="title">Your Products</h1>
+
+      <div class="product-list">
+        <% for (let product of prods) { %>
+          <div class="product-card">
+            <h2><%= product.productId.title %></h2>
+            <p class="price">$<%= product.productId.price %></p>
+            <p class="quantity">Quantity: <%= product.quantity %></p>
+
+          </div>
+          <% } %>
+        </div>
+        <form action="/order" method="post" style="margin-top: 30px;">
+          <button type="submit" class="order-btn">Order Now</button>
+        </form>
+
+    <% } else { %>
+      <h1 class="no-products">No products here yet</h1>
+    <% } %>
+  </div>
+
+</body>
 </html>

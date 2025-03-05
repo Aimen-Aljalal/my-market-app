@@ -3,21 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Welcome Page</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        text-align: center;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      a {
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        background: #007bff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+
+      a:hover {
+        background: #0056b3;
+      }
+    </style>
   </head>
   <body>
-    <% if(isAuth) { %>
-    <h1>welcomme back</h1>
+    <div class="container">
+      <h1>Welcome Back</h1>
+      <% if (isAuth) { %> <%- include("partials/header") %>
 
-    <a href="/shop">shop</a>
-    <a href="/addProduct"> add product</a>
-    <a href="/cart">cart</a>
-    <a href="/order">order</a>
 
-    <% } else { %>
-    <h1>here is the main page</h1>
-    <a href="/signup">sign up</a>
-    <a href="/login"> login </a>
-    <% }%>
+      <% } else { %>
+      <h1>Here is the Main Page</h1>
+      <nav>
+        <a href="/signup">Sign Up</a>
+        <a href="/login">Login</a>
+      </nav>
+      <% } %>
+    </div>
   </body>
 </html>
