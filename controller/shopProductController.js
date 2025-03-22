@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const pdfdoc = require("pdfkit");
 const Order = require("../models/order");
+const io = require("../socket");
 
 exports.getShop = (req, res, next) => {
   Product.find()
@@ -18,7 +19,7 @@ exports.getAddProduct = (req, res, next) => {
   res.render("addProduct");
 };
 
-exports.postAddProduct = (req, res, next) => {
+exports.postAddProduct = async (req, res, next) => {
   const title = req.body.title;
   const price = req.body.price;
   const image = req.file;
@@ -32,14 +33,9 @@ exports.postAddProduct = (req, res, next) => {
     description: description,
     userId: req.user,
   });
-  return product
-    .save()
-    .then(() => {
-      res.redirect("/shop");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  await product.save();
+  io.getIO().emit("created-product", product);
+  res.redirect("/shop");
 };
 
 exports.deleteProduct = (req, res, next) => {

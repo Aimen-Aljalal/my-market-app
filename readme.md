@@ -21,3 +21,5 @@
 10. **multer**: Used `multer` for handling file uploads and processing uploaded files in HTTP requests.
 
 11. **pdfkit**: Used `pdfkit` to generate custom PDF files within the application.
+
+12. **socket.io**: Used socket.io to enable real-time communication between the server and clients via WebSocket.

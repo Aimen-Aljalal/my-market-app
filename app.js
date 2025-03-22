@@ -8,7 +8,9 @@ const MongoDbStore = require("connect-mongodb-session")(session);
 const User = require("./models/user");
 const shopRoute = require("./routes/route");
 const multer = require("multer");
-
+const socket = require("./socket");
+const http = require("http");
+const server = http.createServer(app);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
@@ -82,5 +84,8 @@ app.use((req, res, next) => {
 app.use(shopRoute);
 
 mongoose.connect(MongoUrl).then(() => {
-  app.listen(3000);
+  socket.init(server)
+  server.listen(3000 , () =>  {
+    console.log('server work on port 3000')
+  });
 });
